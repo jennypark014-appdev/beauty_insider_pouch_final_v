@@ -24,7 +24,13 @@
       <dd><%= @product.purchased %></dd>
 
       <dt>Brand</dt>
-      <dd><%= @product.brand_id %></dd>
+      <dd>
+        <% if @product.brand.present? %>
+          <a href="/brands/<%= @product.brand_id %>">
+            <%= @product.brand.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
