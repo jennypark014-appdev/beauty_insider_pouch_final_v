@@ -60,6 +60,73 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_product" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- Label and input for benefits -->
+      <div class="form-group">
+        <label for="benefits" class="control-label">
+          Benefits
+        </label>
+
+        <input type="text" id="benefits" name="benefits" placeholder="Benefits" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for comments -->
+      <div class="form-group">
+        <label for="comments" class="control-label">
+          Comments
+        </label>
+
+        <textarea id="comments" name="comments" placeholder="Comments" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- Label and input for purchased -->
+      <div class="checkbox">
+        <label for="purchased">
+          <input type="checkbox" id="purchased" name="purchased" value="1" <%= "checked" if @product.purchased %>>
+          Purchased
+        </label>
+      </div>
+
+      <!-- Label and input for brand_id -->
+      <input type="hidden" name="brand_id" value="<%= @brand.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Product
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
