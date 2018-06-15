@@ -1,0 +1,90 @@
+<!-- Validation failure messages -->
+<% if @product.errors.any? %>
+  <% @product.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Product #<%= @product.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_product/<%= @product.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @product.name %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @product.description %></textarea>
+      </div>
+
+      <!-- Label and input for benefits -->
+      <div class="form-group">
+        <label for="benefits" class="control-label">
+          Benefits
+        </label>
+
+        <input type="text" id="benefits" name="benefits" placeholder="Benefits" class="form-control" value="<%= @product.benefits %>">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @product.price %>">
+      </div>
+
+      <!-- Label and input for comments -->
+      <div class="form-group">
+        <label for="comments" class="control-label">
+          Comments
+        </label>
+
+        <textarea id="comments" name="comments" placeholder="Comments" class="form-control" rows="3"><%= @product.comments %></textarea>
+      </div>
+
+      <!-- Label and input for purchased -->
+      <div class="checkbox">
+        <label for="purchased">
+          <input type="checkbox" id="purchased" name="purchased" value="1" <%= "checked" if @product.purchased %>>
+          Purchased
+        </label>
+      </div>
+
+      <!-- Label and input for brand_id -->
+      <div class="form-group">
+        <label for="brand_id" class="control-label">
+          Brand
+        </label>
+
+        <input type="text" id="brand_id" name="brand_id" placeholder="Brand" class="form-control" value="<%= @product.brand_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Product
+      </button>
+      or
+      <a href="/products/<%= @product.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
