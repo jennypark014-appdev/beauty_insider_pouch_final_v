@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   root :to => "brands#index"
   # Routes for the Product resource:
   # CREATE
