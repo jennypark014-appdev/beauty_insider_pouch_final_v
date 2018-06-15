@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @brand.errors.any? %>
+  <% @brand.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Brand #<%= @brand.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_brand/<%= @brand.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @brand.name %>">
+      </div>
+
+      <!-- Label and input for ceo -->
+      <div class="form-group">
+        <label for="ceo" class="control-label">
+          Ceo
+        </label>
+
+        <input type="text" id="ceo" name="ceo" placeholder="Ceo" class="form-control" value="<%= @brand.ceo %>">
+      </div>
+
+      <!-- Label and input for beauty_ranking -->
+      <div class="form-group">
+        <label for="beauty_ranking" class="control-label">
+          Beauty ranking
+        </label>
+
+        <input type="text" id="beauty_ranking" name="beauty_ranking" placeholder="Beauty ranking" class="form-control" value="<%= @brand.beauty_ranking %>">
+      </div>
+
+      <!-- Label and input for product_id -->
+      <div class="form-group">
+        <label for="product_id" class="control-label">
+          Product
+        </label>
+
+        <input type="text" id="product_id" name="product_id" placeholder="Product" class="form-control" value="<%= @brand.product_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Brand
+      </button>
+      or
+      <a href="/brands/<%= @brand.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
