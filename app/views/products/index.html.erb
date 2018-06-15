@@ -27,7 +27,7 @@
         <td><%= product.price %></td>
         <td><%= product.comments %></td>
         <td><%= product.purchased %></td>
-        <td><%= product.brand_id %></td>
+        <td><%= product.brand.name %></td>
         <td>
           <a href="/products/<%= product.id %>" class="btn btn-primary">Show</a>
           <a href="/products/<%= product.id %>/edit" class="btn btn-warning">Edit</a>
