@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "brands#index"
   # Routes for the Product resource:
   # CREATE
   get "/products/new", :controller => "products", :action => "new"
